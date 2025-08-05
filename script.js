@@ -3,8 +3,9 @@ for (let i = 0; i < ringButton.length; i++) {
   const ringBtn = ringButton[i];
   ringBtn.addEventListener("click", function (event) {
     // get button id for color
-    const color = event.target.id;
-    console.log(color);
+    const color = event.target.id.replace("-color", "");
+      console.log(color);
+      
     // cheeck previuse border
     for (let j = 0; j < ringButton.length; j++) {
       ringButton[j].classList.remove("border-purple-700");
@@ -15,6 +16,6 @@ for (let i = 0; i < ringButton.length; i++) {
 
     // get product image
     const productImage = document.getElementById("product-image");
-    productImage.src = "./images/gray.png";
+    productImage.src = "./images/" + color + ".png";
   });
 }
