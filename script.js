@@ -61,14 +61,25 @@ addToCartButton.addEventListener("click", function () {
     const selectedColorButton = document.querySelector(
       "button.border-purple-700.w-6"
     );
-    const selectedColor = selectedColorButton.id.split("-");
+    const selectedColor = selectedColorButton.id.split("-")[0];
     const selectedSizeButton = document.querySelector(
       "button.border-purple-700:not(.w-6"
     );
     // console.log(selectedSizeButton.innerText);
-    const selectSize = selectedSizeButton.innerText.split(" ")[0];
-    console.log(selectSize);
-
+    const selectedSize = selectedSizeButton.innerText.split(" ")[0];
+    const selectedPrice = selectedSizeButton.innerText
+      .split(" ")[1]
+      .split("$")[1];
+    cartItems.push({
+      image: selectedColor + ".png",
+      title: "Classy Modern Smart Watch",
+      color: selectedColor,
+      size: selectedSize,
+      price: selectedPrice,
+      quantity: quantity,
+      total: selectedPrice * quantity,
+    });
+    console.log(cartItems)
   } else {
     alert("Please select a size and quantity.");
   }
