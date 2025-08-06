@@ -42,7 +42,19 @@ for (let btn of quentityElements) {
     const currentQuantity = parseInt(
       document.getElementById("quantity").innerText
     );
-    const newQuantity = Math.max(0, currentQuantity + amount); 
+    const newQuantity = Math.max(0, currentQuantity + amount);
     document.getElementById("quantity").innerText = newQuantity;
   });
 }
+
+// add to cart functionality
+const addToCartButton = document.getElementById("add-to-cart");
+addToCartButton.addEventListener("click", function () {
+  const checkoutContainer = document.getElementById("checkout-container");
+  const quantity = parseInt(document.getElementById("quantity").innerText);
+  if (quantity > 0) {
+    checkoutContainer.classList.remove("hidden");
+    const cartCount = document.getElementById("cart-count");
+    cartCount.innerText = quantity;
+  }
+});
