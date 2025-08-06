@@ -5,8 +5,6 @@ for (let i = 0; i < ringButton.length; i++) {
   ringBtn.addEventListener("click", function (event) {
     // get button id for color
     const color = event.target.id.replace("-color", "");
-    console.log(color);
-
     // cheeck previuse border
     for (let j = 0; j < ringButton.length; j++) {
       ringButton[j].classList.remove("border-purple-700");
@@ -21,6 +19,7 @@ for (let i = 0; i < ringButton.length; i++) {
   });
 }
 
+// size button functionality
 function selectSize(size) {
   const sizes = ["S", "M", "L", "XL"];
   for (let i = 0; i < sizes.length; i++) {
@@ -32,4 +31,18 @@ function selectSize(size) {
       button.classList.remove("border-purple-700");
     }
   }
+}
+
+// product quentity increment and decrement
+const quentityElements = document.querySelectorAll(".quantity-button");
+for (let btn of quentityElements) {
+  btn.addEventListener("click", function (event) {
+    const amount = event.target.innerText === "+" ? 1 : -1;
+    console.log(amount);
+    const currentQuantity = parseInt(
+      document.getElementById("quantity").innerText
+    );
+    const newQuantity = Math.max(0, currentQuantity + amount); 
+    document.getElementById("quantity").innerText = newQuantity;
+  });
 }
