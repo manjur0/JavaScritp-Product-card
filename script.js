@@ -48,6 +48,7 @@ for (let btn of quentityElements) {
 }
 
 // add to cart functionality
+const cartItems = [];
 const addToCartButton = document.getElementById("add-to-cart");
 addToCartButton.addEventListener("click", function () {
   const checkoutContainer = document.getElementById("checkout-container");
@@ -56,5 +57,19 @@ addToCartButton.addEventListener("click", function () {
     checkoutContainer.classList.remove("hidden");
     const cartCount = document.getElementById("cart-count");
     cartCount.innerText = quantity;
+    //
+    const selectedColorButton = document.querySelector(
+      "button.border-purple-700.w-6"
+    );
+    const selectedColor = selectedColorButton.id.split("-");
+    const selectedSizeButton = document.querySelector(
+      "button.border-purple-700:not(.w-6"
+    );
+    // console.log(selectedSizeButton.innerText);
+    const selectSize = selectedSizeButton.innerText.split(" ")[0];
+    console.log(selectSize);
+
+  } else {
+    alert("Please select a size and quantity.");
   }
 });
