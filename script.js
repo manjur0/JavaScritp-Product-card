@@ -1,5 +1,5 @@
 const ringButton = document.querySelectorAll(".ring-button");
-
+const productImageBase = "./images/";
 for (let i = 0; i < ringButton.length; i++) {
   const ringBtn = ringButton[i];
   ringBtn.addEventListener("click", function (event) {
@@ -15,7 +15,7 @@ for (let i = 0; i < ringButton.length; i++) {
 
     // get product image
     const productImage = document.getElementById("product-image");
-    productImage.src = `./images/${color}.png`;
+    productImage.src = `${productImageBase}${color}.png`;
   });
 }
 
@@ -79,8 +79,35 @@ addToCartButton.addEventListener("click", function () {
       quantity: quantity,
       total: selectedPrice * quantity,
     });
-    console.log(cartItems)
+    console.log(cartItems);
   } else {
     alert("Please select a size and quantity.");
   }
+});
+
+document.getElementById("checkout-btn").addEventListener("click", function () {
+  const cartModal = document.getElementById("cart-modal");
+
+  const cartContainer = document.getElementById("cart-items");
+  for (let i = 0; i < cartItems.length; i++) {
+    const item = cartItems[i];
+
+    const tableRow = document.createElement("tr");
+    tableRow.classList.add("border-b");
+    tableRow.innerHTML = `
+    <td>
+      <div class="flex items-center space-x-2">
+       <img  class="w-16 h-16 object-contain" src=${productImageBase}${item.image}  alt=${item.image}}>
+       <span class="font-semibold">${item.title}</span>
+       <span>${item.color}</span>
+       <span>${item.size}</span>
+       <span>${item.quantity}</span>
+       <span>${item.price}</span>
+       </div>
+    </td>
+    `;
+    cartContainer.appendChild(tableRow);
+  }
+
+  cartModal.classList.remove("hidden");
 });
