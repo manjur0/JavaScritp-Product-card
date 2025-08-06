@@ -75,9 +75,8 @@ addToCartButton.addEventListener("click", function () {
       title: "Classy Modern Smart Watch",
       color: selectedColor,
       size: selectedSize,
-      price: selectedPrice,
+      price: selectedPrice * quantity,
       quantity: quantity,
-      total: selectedPrice * quantity,
     });
     console.log(cartItems);
   } else {
@@ -96,13 +95,13 @@ document.getElementById("checkout-btn").addEventListener("click", function () {
     tableRow.classList.add("border-b");
     tableRow.innerHTML = `
     <td>
-      <div class="flex items-center space-x-2">
+      <div class="flex items-center space-x-2 py-2">
        <img  class="w-16 h-16 object-contain" src=${productImageBase}${item.image}  alt=${item.image}}>
        <span class="font-semibold">${item.title}</span>
-       <span>${item.color}</span>
-       <span>${item.size}</span>
-       <span>${item.quantity}</span>
-       <span>${item.price}</span>
+       <td>${item.color}</td>
+       <td>${item.size}</td>
+       <td>${item.quantity}</td>
+       <td>$ ${item.price}</td>
        </div>
     </td>
     `;
