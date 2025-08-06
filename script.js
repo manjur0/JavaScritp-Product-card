@@ -77,6 +77,7 @@ addToCartButton.addEventListener("click", function () {
       size: selectedSize,
       price: selectedPrice * quantity,
       quantity: quantity,
+      total: selectedPrice * quantity,
     });
     console.log(cartItems);
   } else {
@@ -107,6 +108,11 @@ document.getElementById("checkout-btn").addEventListener("click", function () {
     `;
     cartContainer.appendChild(tableRow);
   }
-
   cartModal.classList.remove("hidden");
 });
+
+document
+  .getElementById("continue-shopping")
+  .addEventListener("click", function () {
+    document.getElementById("cart-modal").classList.add("hidden");
+  });
